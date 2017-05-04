@@ -1,68 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-us">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Vue News</title>
-  <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet"
-        type="text/css">
-  <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet" type="text/css">
+	<meta charset="utf-8">
+	<title>Vue Top News</title>
 </head>
+
 <body>
-<v-app id="vue-news">
-  <v-toolbar class="light-blue darken-2">
-    <v-toolbar-title class="text-lg-center">{{ title }}</v-toolbar-title>
-  </v-toolbar>
-  <v-card class="elevation-0">
-    <v-card-text>
-      <v-container fluid="fluid">
-        <v-row>
-          <v-col lg2 offset-lg5>
-            <v-select
-                :items="formalSection"
-                v-model="selected"
-                label="News Sections"
-                light
-                single-line
-                auto
-            />
-          </v-col>
-          <v-btn light flat class="btn--light-flat-focused" @click.native="retrieveNews(selected)">Retrieve</v-btn>
-        </v-row>
-        <v-row>
-          <v-col lg4 v-for="item in news" :key="item">
-            <v-card class="white mt-4">
-              <v-card-row class="light-blue lighten-2">
-                <v-card-title>
-                  <span class="white--text">{{ item.title }}</span>
-                  <v-spacer></v-spacer>
-                </v-card-title>
-              </v-card-row>
-              <v-card-text>{{ item.abstract }}</v-card-text>
-            </v-card>
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-card-text>
-  </v-card>
-</v-app>
-
-
-<!--<div id="vue-news">-->
-<!--<h2 align="center">{{ title }}</h2>-->
-<!--<div align="center">-->
-<!--<select v-model="selected">-->
-<!--<option selected>Home</option>-->
-<!--<option v-for="section in formalSection">{{ section }}</option>-->
-<!--</select>-->
-<!--<button @click="retrieveNews(selected)">Retrieve</button>-->
-<!--</div>-->
-<!--<ul>-->
-<!--<li v-for="item in news">{{ item.title }}<br>{{ item.abstract }}</li>-->
-<!--</ul>-->
-<!--</div>-->
-<script src="//unpkg.com/vue"></script>
-<script src="//unpkg.com/vuetify/dist/vuetify.min.js"></script>
-<script src="//unpkg.com/axios/dist/axios.min.js"></script>
-<script src="main.js"></script>
+	<app></app>
+	<script src="//unpkg.com/vue"></script>
+	<script src="//unpkg.com/axios/dist/axios.min.js"></script>
+	<script type="text/javascript" src="main.js"></script>
 </body>
+
 </html>
