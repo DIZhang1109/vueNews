@@ -8,26 +8,56 @@
 new Vue({
     el: 'app',
     template: `
-        <div id="view">
-    		<h3 align="center">{{ title }}</h3>
-    		<div align="center">
-    			<select v-model="selected">
-    				<option value="">Home</option>
-    				<option v-for="section in newSections">{{ section }}</option>
-    			</select>
-    			<button @click="retrieveNews(selected)">Retrieve</button><br>
-    		</div>
-    		<h4>Top Stories of {{ selected }} Today: {{ news.length }}</h4>
-    		<ul>
-    			<li v-for="item in news">
-    				{{ item.title }}<br>
-    				<div v-if="item.multimedia.length >= 1">
-    					<img :src="item.multimedia[1].url"><br>
-    				</div>
-    				{{ item.abstract }}
-    			</li>
-    		</ul>
-		</div>
+        <v-app id="example-1">
+          <v-toolbar>
+            <v-toolbar-title class="text-xs-center">{{ title }}</v-toolbar-title>
+          </v-toolbar>
+          <v-container fluid="fluid" class="mt-1">
+            <v-row class="ma-1">
+              <v-col xs3 offset-xs3>
+                <v-card class="elevation-0">
+                  <v-select
+                      :items="newSections"
+                      v-model="selected"
+                      label="News Section"
+                      light
+                      single-line
+                      auto
+                  />
+                </v-card>
+              </v-col>
+              <v-col xs1 offset-xs1>
+                <v-card class="elevation-0">
+                  <v-card-text class="text-xs-center">
+                    <div>
+                      <v-btn light flat @click.native="retrieveNews(selected)">
+                        Retrieve
+                      </v-btn>
+                    </div>
+                  </v-card-text>
+                </v-card>
+              </v-col>
+            </v-row>
+            <v-row class="pa-2">
+              <v-col xs3 v-for="item in news" :key="item" class="pa-3">
+                <v-card>
+                  <v-card-row class="blue-grey darken-1">
+                    <v-card-title>
+                      <span class="white--text">{{ item.title }}</span>
+                      <v-spacer></v-spacer>
+                    </v-card-title>
+                  </v-card-row>
+                  <div v-if="item.multimedia.length >= 1">
+                    <v-card-row :style="{ background: 'url(' + item.multimedia[1].url + ')' }" height="150px"></v-card-row>
+    			  </div>
+                  <v-card-text class="blue-grey darken-3 white--text">
+                    {{ item.abstract }}
+                  </v-card-text>
+                </v-card>
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-app>
     `,
     data: {
         title: 'Vue Top News',
