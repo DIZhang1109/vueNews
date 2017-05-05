@@ -8,7 +8,7 @@
 new Vue({
     el: 'app',
     template: `
-        <v-app id="example-1">
+        <v-app>
           <v-toolbar>
             <v-toolbar-title class="text-xs-center">{{ title }}</v-toolbar-title>
           </v-toolbar>
